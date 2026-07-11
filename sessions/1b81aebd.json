@@ -1,0 +1,15 @@
+{
+    "id": "1b81aebd",
+    "name": "New Chat",
+    "created": 1768692728.419609,
+    "history": [
+        {
+            "role": "user",
+            "content": "csin\u00e1lj egy clicker gamet"
+        },
+        {
+            "role": "model",
+            "content": "[{\"action\": \"createPart\", \"name\": \"ClickArea\", \"parent\": \"Workspace\", \"properties\": {\"Size\": [5, 0.5, 5], \"Position\": [0, 0.25, 0], \"Anchored\": true, \"Color\": [1, 0, 0]}}, {\"action\": \"createScript\", \"name\": \"ClickScript\", \"parent\": \"ClickArea\", \"scriptContent\": \"--// Services\\nlocal Players = game:GetService(\\\"Players\\\")\\n\\n--// Variables\\nlocal clickArea = script.Parent\\nlocal clicks = 0\\nlocal clickAmount = 1\\n\\n--// Functions\\nlocal function onMouseClicked(player)\\n\\tclicks = clicks + clickAmount\\n\\tplayer.PlayerGui.MainGui.ClickLabel.Text = \\\"Clicks: \\\" .. clicks\\nend\\n\\n--// Connections\\nclickArea.ClickDetector.MouseClick:Connect(onMouseClicked)\"}, {\"action\": \"insertObject\", \"name\": \"ClickDetector\", \"parent\": \"ClickArea\", \"className\": \"ClickDetector\"}, {\"action\": \"createFolder\", \"name\": \"PlayerGuis\", \"parent\": \"StarterGui\"}, {\"action\": \"createScreenGui\", \"name\": \"MainGui\", \"parent\": \"PlayerGuis\"}, {\"action\": \"createFrame\", \"name\": \"ClickFrame\", \"parent\": \"MainGui\", \"properties\": {\"Size\": [0.3, 0.1], \"Position\": [0.35, 0.85], \"BackgroundColor3\": [0, 0, 0], \"BorderSizePixel\": 0}}, {\"action\": \"createTextLabel\", \"name\": \"ClickLabel\", \"parent\": \"ClickFrame\", \"properties\": {\"Size\": [1, 1], \"Position\": [0, 0], \"BackgroundColor3\": [1, 1, 1], \"BackgroundTransparency\": 1, \"Text\": \"Clicks: 0\", \"TextColor3\": [1, 1, 1], \"TextScaled\": true, \"TextXAlignment\": \"Center\", \"TextYAlignment\": \"Center\"}}]"
+        }
+    ]
+}

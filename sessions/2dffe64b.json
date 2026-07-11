@@ -1,0 +1,15 @@
+{
+    "id": "2dffe64b",
+    "name": "New Chat",
+    "created": 1768693248.0311017,
+    "history": [
+        {
+            "role": "user",
+            "content": "Csin\u00e1lj egy clicker gamet"
+        },
+        {
+            "role": "model",
+            "content": "[{\"action\": \"createScreenGui\", \"name\": \"ClickerGui\", \"parent\": \"StarterGui\"}, {\"action\": \"createTextButton\", \"name\": \"ClickButton\", \"parent\": \"ClickerGui\", \"properties\": {\"Size\": [0.2, 0.1], \"Position\": [0.4, 0.4], \"Text\": \"Click!\", \"BackgroundColor3\": [1, 1, 1]}}, {\"action\": \"createTextBox\", \"name\": \"ScoreDisplay\", \"parent\": \"ClickerGui\", \"properties\": {\"Size\": [0.2, 0.05], \"Position\": [0.4, 0.2], \"Text\": \"Score: 0\", \"ReadOnly\": true, \"BackgroundColor3\": [1, 1, 1]}}, {\"action\": \"createLocalScript\", \"name\": \"ClickerScript\", \"parent\": \"ClickButton\", \"script\": \"-- LocalScript inside ClickButton\\n\\nlocal button = script.Parent\\nlocal scoreDisplay = button.Parent:WaitForChild(\\\"ScoreDisplay\\\")\\nlocal score = 0\\n\\nbutton.MouseButton1Click:Connect(function()\\n    score = score + 1\\n    scoreDisplay.Text = \\\"Score: \\\" .. score\\nend)\\n\"}]"
+        }
+    ]
+}

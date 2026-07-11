@@ -1,0 +1,15 @@
+{
+    "last_session": "2026-01-09",
+    "supported_api": "2026-latest",
+    "project_goals": [
+        "Autonomous code generation",
+        "Self-healing error correction",
+        "Workspace context awareness"
+    ],
+    "optimization_tips": {
+        "memory": "Use task.wait() instead of wait(), use StreamingEnabled for large maps.",
+        "network": "Minimize RemoteEvent spam, use unreliable events for non-critical data.",
+        "security": "Validate all client input on the server, avoid loadstring in production games."
+    },
+    "favorite_color": "neon green"
+}

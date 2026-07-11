@@ -1,0 +1,15 @@
+{
+    "id": "de45239b",
+    "name": "New Chat",
+    "created": 1768693488.089256,
+    "history": [
+        {
+            "role": "user",
+            "content": "csin\u00e1lj egy clicker j\u00e1t\u00e9kot"
+        },
+        {
+            "role": "model",
+            "content": "[{\"action\": \"createScreenGui\", \"name\": \"ClickerGUI\", \"parent\": \"StarterGui\"}, {\"action\": \"createTextButton\", \"name\": \"ClickButton\", \"parent\": \"ClickerGUI\", \"properties\": {\"Size\": [0.2, 0.1], \"Position\": [0.4, 0.4], \"Text\": \"Click!\", \"BackgroundColor3\": [1, 0, 0]}}, {\"action\": \"createTextLabel\", \"name\": \"ScoreLabel\", \"parent\": \"ClickerGUI\", \"properties\": {\"Size\": [0.2, 0.1], \"Position\": [0.4, 0.5], \"Text\": \"Score: 0\", \"BackgroundColor3\": [1, 1, 1]}}, {\"action\": \"createScript\", \"name\": \"ClickerScript\", \"parent\": \"ClickerGUI\", \"content\": \"-- Local variables\\nlocal score = 0\\n\\n-- Function to update the score label\\nlocal function updateScoreLabel()\\n\\tscript.Parent.ScoreLabel.Text = \\\"Score: \\\" .. score\\nend\\n\\n-- Function to handle the button click\\nlocal function onButtonClick()\\n\\tscore = score + 1\\n\\tupdateScoreLabel()\\nend\\n\\n-- Connect the button click event\\nscript.Parent.ClickButton.MouseButton1Click:Connect(onButtonClick)\\n\\n-- Initialize the score label\\nupdateScoreLabel()\"}]"
+        }
+    ]
+}
