@@ -1,53 +1,53 @@
-# RobloxAI — Multi-Agent Roblox Játéképítő
+# RobloxAI — Multi-Agent Roblox Game Builder
 
-**Több AI ágensből álló rendszer (Menedzser + Építész + Kódoló), amely automatikusan generál Roblox játékokat a Gemini és DeepSeek API segítségével.**
+**A multi-agent system (Manager + Architect + Coder) that automatically generates Roblox games using the Gemini and DeepSeek APIs.**
 
-## 🤖 Leírás
+## 🤖 Description
 
-A RobloxAI egy multi-agent rendszer, amely három specializált AI ágens segítségével épít Roblox játékokat:
+RobloxAI is a multi-agent system that builds Roblox games using three specialized AI agents:
 
-- **🧭 Menedzser (Manager)** — Feladat felbontása, követelmények elemzése, munkafolyamat irányítása
-- **🏗️ Építész (Architect)** — Játéktervezés, pálya struktúra, játékmechanika definiálása
-- **💻 Kódoló (Coder)** — Lua kód generálása, Roblox Studio plugin, implementáció
+- **🧭 Manager** — Task decomposition, requirements analysis, workflow orchestration
+- **🏗️ Architect** — Game design, level structure, game mechanics definition
+- **💻 Coder** — Lua code generation, Roblox Studio plugin, implementation
 
-### API támogatás
+### API Support
 
 - **Google Gemini API** — `gemini-2.0-flash`
 - **DeepSeek API** — `deepseek-chat`
-- Automatikus provider váltás hiba esetén
+- Automatic provider fallback on error
 
 ### Plugin
 
-A `plugin.lua` egy Roblox Studio plugin, amely közvetlen kapcsolatot biztosít a szerver és a Roblox Studio között.
+`plugin.lua` is a Roblox Studio plugin that provides a direct connection between the server and Roblox Studio.
 
-## 📁 Fájlszerkezet
+## 📁 File Structure
 
 ```
 RobloxAI/
-├── server.py                    # Flask szerver (184 sor)
-├── agent_roles.py               # AI ágens szerepkörök és promptok
+├── server.py                    # Flask server (184 lines)
+├── agent_roles.py               # AI agent roles and prompts
 ├── plugin.lua                   # Roblox Studio plugin
-├── project_memory.json          # Projekt memória
-├── memory.json                  # Általános memória
-├── test_connection.py           # Kapcsolat tesztelő
-├── test_memory.py               # Memória teszt
-├── test_integration.py          # Integrációs teszt
-├── list_models.py               # Elérhető modellek listázása
-├── check_models.js              # Modellek ellenőrzése (JS)
-├── check_api.py                 # API ellenőrzés
-├── requirements.txt             # Függőségek
-├── .env                         # Környezeti változók (API kulcsok)
-└── sessions/                    # Mentett munkamenetek
+├── project_memory.json          # Project memory
+├── memory.json                  # General memory
+├── test_connection.py           # Connection tester
+├── test_memory.py               # Memory test
+├── test_integration.py          # Integration test
+├── list_models.py               # Available model listing
+├── check_models.js              # Model checker (JS)
+├── check_api.py                 # API checker
+├── requirements.txt             # Dependencies
+├── .env                         # Environment variables (API keys)
+└── sessions/                    # Saved sessions
     ├── 1b81aebd.json
     ├── 2dffe64b.json
     └── de45239b.json
 ```
 
-## 🚀 Használat
+## 🚀 Usage
 
-### Környezet beállítása
+### Environment setup
 
-Hozz létre egy `.env` fájlt:
+Create a `.env` file:
 
 ```env
 GEMINI_API_KEY=your_gemini_api_key
@@ -56,122 +56,125 @@ AI_PROVIDER=deepseek
 ROBLOX_PROJECT_PATH=./src
 ```
 
-### Szerver indítása
+### Starting the server
 
 ```bash
-# Függőségek telepítése
+# Install dependencies
 pip install -r requirements.txt
 
-# Szerver indítása
+# Start server
 python server.py
 ```
 
-A szerver a `http://localhost:5000` címen indul.
+The server starts at `http://localhost:5000`.
 
-### API végpontok
+### API Endpoints
 
 ```bash
-# Új játék projekt indítása
+# Create a new game project
 curl -X POST http://localhost:5000/create \
   -H "Content-Type: application/json" \
-  -d '{"prompt": "Készíts egy obby pályát checkpointokkal"}'
+  -d '{"prompt": "Build an obby course with checkpoints"}'
 
-# Feladat státusz lekérdezése
+# Query task status
 curl http://localhost:5000/status/<job_id>
 
-# Eredmény lekérése
+# Retrieve result
 curl http://localhost:5000/result/<job_id>
 ```
 
-### Kapcsolat tesztelése
+### Testing the connection
 
 ```bash
 python test_connection.py
 python check_api.py
 ```
 
-### Roblox Studio plugin
+### Roblox Studio Plugin
 
-1. Nyisd meg a Roblox Studio-t
-2. Töltsd be a `plugin.lua` fájlt
-3. Állítsd be a szerver URL-jét
-4. Használd a plugin gombjait a játék generálásához
+1. Open Roblox Studio
+2. Load the `plugin.lua` file
+3. Set the server URL
+4. Use the plugin buttons for game generation
 
-## 📦 Függőségek
+## 📦 Dependencies
 
 ```bash
 pip install flask google-generativeai python-dotenv requests
 ```
 
 - **Python 3.10+**
-- **Flask** — web szerver
-- **google-generativeai** — Gemini API kliens
-- **python-dotenv** — környezeti változók
-- **requests** — HTTP kliens (DeepSeek API)
+- **Flask** — web server
+- **google-generativeai** — Gemini API client
+- **python-dotenv** — environment variables
+- **requests** — HTTP client (DeepSeek API)
 
-## 🔄 Munkafolyamat
+## 🔄 Workflow
 
 ```
-Felhasználó → "Készíts egy obby pályát"
+User → "Build an obby course"
     ↓
-[MANAGER] Feladat elemzése
-    ├── Pálya: obby stílus
-    ├── Mechanika: checkpoint, respawn
-    ├── Nehézség: közepes
-    └── Eszközök: platformok, létrák
+[MANAGER] Task analysis
+    ├── Level: obby style
+    ├── Mechanics: checkpoint, respawn
+    ├── Difficulty: medium
+    └── Assets: platforms, ladders
     ↓
-[ARCHITECT] Játékterv készítése
-    ├── Pályatérkép
-    ├── Objektum lista
-    └── Játékmenet flow
+[ARCHITECT] Game design
+    ├── Level map
+    ├── Object list
+    └── Gameplay flow
     ↓
-[CODER] Lua kód generálása
-    ├── Map generátor script
-    ├── Checkpoint rendszer
-    ├── Respawn logika
-    └── Plugin parancsok
+[CODER] Lua code generation
+    ├── Map generator script
+    ├── Checkpoint system
+    ├── Respawn logic
+    └── Plugin commands
     ↓
-Roblox Studio plugin futtatja a kódot
+Roblox Studio plugin executes the code
     ↓
-KÉSZ JÁTÉK 🎮
+FINISHED GAME 🎮
 ```
 
-## 🎯 Ágens szerepkörök
+## 🎯 Agent Roles
 
-### Manager prompt (részlet)
-
-```
-Te egy tapasztalt játékfejlesztési projektmenedzser vagy.
-Bontsd fel a feladatot részegységekre.
-Határozd meg a szükséges komponenseket.
-Priorizáld a feladatokat.
-```
-
-### Architect prompt (részlet)
+### Manager prompt (excerpt)
 
 ```
-Te egy Roblox játéktervező vagy.
-Tervezd meg a pálya struktúráját.
-Definiáld a játékmechanikákat.
-Készíts részletes tervet a kódolónak.
+You are an experienced game development project manager.
+Decompose the task into sub-units.
+Identify the required components.
+Prioritize the tasks.
 ```
 
-### Coder prompt (részlet)
+### Architect prompt (excerpt)
 
 ```
-Te egy Roblox Lua fejlesztő vagy.
-Generálj tiszta, működő Lua kódot.
-Kövessd a Roblox best practice-eket.
-Készíts moduláris, újrafelhasználható kódot.
+You are a Roblox game designer.
+Design the level structure.
+Define the game mechanics.
+Create a detailed plan for the coder.
 ```
 
-## ⚙️ Konfiguráció
+### Coder prompt (excerpt)
 
-A `.env` fájl változói:
+```
+You are a Roblox Lua developer.
+Generate clean, working Lua code.
+Follow Roblox best practices.
+Create modular, reusable code.
+```
 
-| Változó | Leírás | Alapértelmezett |
-|---------|--------|-----------------|
-| `GEMINI_API_KEY` | Google Gemini API kulcs | — |
-| `DEEPSEEK_API_KEY` | DeepSeek API kulcs | — |
-| `AI_PROVIDER` | AI szolgáltató (`gemini` / `deepseek`) | `deepseek` |
-| `ROBLOX_PROJECT_PATH` | Generált fájlok helye | `./src` |
+## ⚙️ Configuration
+
+The `.env` file variables:
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `GEMINI_API_KEY` | Google Gemini API key | — |
+| `DEEPSEEK_API_KEY` | DeepSeek API key | — |
+| `AI_PROVIDER` | AI provider (`gemini` / `deepseek`) | `deepseek` |
+| `ROBLOX_PROJECT_PATH` | Generated files location | `./src` |
+
+## Author
+Zsombi & Hermes Agent (Nous Research)
