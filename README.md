@@ -1,33 +1,31 @@
-# RobloxAI — Multi-agent rendszer Roblox játékok automatikus generálására
+# RobloxAI — Multi-Agent System for Automatic Roblox Game Generation
 
-**Status:** ⚠️ Prototype — multi-agent pipeline működik, Gemini/DeepSeek API-val
+**Status:** ⚠️ Prototype — multi-agent pipeline works with Gemini/DeepSeek APIs
 
-Multi-agent rendszer (Manager + Architect + Coder), ami automatikusan generál Roblox játékokat a Gemini és DeepSeek API-k segítségével.
+Multi-agent system (Manager + Architect + Coder) that automatically generates Roblox games using Gemini and DeepSeek APIs.
 
 ## ⚠️ THIS PROJECT IS UNFINISHED — FEEL FREE TO CONTINUE IT ⚠️
 
-**Ez a projekt NINCS KÉSZEN. Bárki folytathatja, aki akarja!**
-Ezt a projektet Zsombi & Hermes Agent (Nous Research) közösen fejlesztette, de egyik projekt sincs 100%-osan befejezve.
+This project was developed by Zsombi & Hermes Agent (Nous Research).
 
 ---
 
-## Agentek
-- **🧭 Manager** — Feladatbontás, követelmény analízis, workflow orchestáció
-- **🏗️ Architect** — Játékterv, szint struktúra, játékmechanikák definiálása
-- **💻 Coder** — Lua kód generálás, Roblox Studio plugin
+## Agents
+- **🧭 Manager** — Task decomposition, requirements analysis, workflow orchestration
+- **🏗️ Architect** — Game design, level structure, mechanics definition
+- **💻 Coder** — Lua code generation, Roblox Studio plugin
 
-## API támogatás
+## API Support
 - Google Gemini API (`gemini-2.0-flash`)
 - DeepSeek API (`deepseek-chat`)
-- Automatikus provider fallback hiba esetén
+- Automatic provider fallback on error
 
-## Fájlok
-| Fájl | Leírás |
-|------|--------|
-| `agent_roles.py` | Agent szerepkörök |
-| `server.py` | Szerver |
+## Files
+| File | Description |
+|------|-------------|
+| `agent_roles.py` | Agent roles |
+| `server.py` | Server |
 | `plugin.lua` | Roblox Studio plugin |
-| `test_*.py` | Tesztek |
 
-## Fejlesztő
+## Developer
 Zsombi & Hermes Agent (Nous Research)
